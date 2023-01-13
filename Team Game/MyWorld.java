@@ -38,9 +38,9 @@ public class MyWorld extends World
         menu.setLocation(721,301);
         Level1();
         addInTowers();
-        showText("Money: " + money, 660,30);
-        showText("Tower = 50",660,70);
-        showText("Mouse = Tower", 660,100);
+        showText("Money: " + money, 700,30);
+        showText("Tower = 50",700,70);
+        showText("Mouse = Tower", 700,100);
         prepare();
     }
 
