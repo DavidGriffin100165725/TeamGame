@@ -8,17 +8,62 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
+    //Bobux
+    public static int money= 100;
+    int basicTowerPrice = 50;
 
-    /**
-     * Constructor for objects of class MyWorld.
-     * 
-     */
+    int map [][] = {{1,1,1,1,1,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,1,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,1,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+        };
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(840, 600, 1); 
+        Menu menu = new Menu();
+        addObject(menu,659,201);
+        menu.setLocation(721,301);
+        Level1();
+        addInTowers();
+        showText("Money: " + money, 660,30);
         prepare();
     }
+
+    public void act()
+    {
+        addInTowers();
+        showText("Money: " + money, 660,30);
+    }
+
+    private void Level1()
+    {
+        for (int i = 0; i < 6; i++)
+            for (int j = 0; j < 11; j++)
+            {
+                if (map[j][i] == 1)
+                {
+                    addObject(new Road(), 30 + i * 60, 30 + j * 60);
+                }
+            }
+
+    }
+    public void addInTowers()
+    {
+        if(Greenfoot.mouseClicked(null) && Greenfoot.getMouseInfo().getActor() ==null && money >= basicTowerPrice)
+        {
+            addObject(new Tower (), (Greenfoot.getMouseInfo().getX() /60) * 60 + 30, (Greenfoot.getMouseInfo().getY() /60) * 60 + 30);
+            money -= basicTowerPrice;
+        }
+    }
+    
     /**
      * Prepare the world for the start of the program.
      * That is: create the initial objects and add them to the world.
@@ -27,3 +72,6 @@ public class MyWorld extends World
     {
     }
 }
+
+    
+    
