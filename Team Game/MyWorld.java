@@ -33,14 +33,15 @@ public class MyWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(840, 600, 1); 
+        Greenfoot.playSound("GameTheme.mp3");
         Menu menu = new Menu();
         addObject(menu,659,201);
         menu.setLocation(721,301);
         Level1();
         addInTowers();
-        showText("Money: " + money, 700,30);
+        showText("Money: " + money, 660,30);
         showText("Tower = 50",700,70);
-        showText("Mouse = Tower", 700,100);
+        showText("Left Mouse Click = Tower", 725,100);
         prepare();
     }
 
@@ -75,8 +76,10 @@ public class MyWorld extends World
         {
             addObject(new Tower (), (Greenfoot.getMouseInfo().getX() /60) * 60 + 30, (Greenfoot.getMouseInfo().getY() /60) * 60 + 30);
             money -= basicTowerPrice;
+            Greenfoot.playSound("Neco-Arc.mp3");
         }
     }
+    
     
     public void spawnWave()
     {

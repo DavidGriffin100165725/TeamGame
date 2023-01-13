@@ -13,7 +13,7 @@ public class Enemy extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     MyWorld world;
-    public int health = 5;
+    public int health = 10;
     
     public Enemy(int level)
     {
@@ -55,12 +55,14 @@ public class Enemy extends Actor
         }
         if(health < 1)
         {
-            world.money += 50;
+            world.money += 1;
             getWorld().removeObject(this);
         }
         else if(isAtEdge())
         {
+            Greenfoot.playSound("Laugh.mp3");
             getWorld().removeObject(this);
+            Greenfoot.setWorld(new GameOver());
         }
     }
     
