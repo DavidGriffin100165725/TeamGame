@@ -20,6 +20,9 @@ public class MainMenu extends World
 
         Titleletters titleletters = new Titleletters();
         addObject(titleletters,419,300);
+        
+        QuitText quittext = new QuitText();
+        addObject(quittext,422,500);
 
         prepare();
     }
@@ -28,6 +31,9 @@ public class MainMenu extends World
     {
         if (Greenfoot.isKeyDown("Enter"))
             Greenfoot.setWorld(new MyWorld());
+            
+        if (Greenfoot.isKeyDown("Q"))
+            Greenfoot.setWorld(new ThankYou());
     }
 
     /**

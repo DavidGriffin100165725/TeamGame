@@ -20,6 +20,8 @@ public class Tower extends Actor
     public void act()
     {
         enemyDetector();
+        if (Greenfoot.isKeyDown("V"))
+            getWorld().removeObject(this);
     }
     public void enemyDetector()
     {

@@ -23,5 +23,7 @@ public class GameOver extends World
     {
         if (Greenfoot.isKeyDown("Z"))
             Greenfoot.setWorld(new MainMenu());
+        if (Greenfoot.isKeyDown("Q"))
+            Greenfoot.setWorld(new ThankYou());
     }
 }

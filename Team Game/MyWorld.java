@@ -42,6 +42,7 @@ public class MyWorld extends World
         showText("Money: " + money, 660,30);
         showText("Tower = 50",700,70);
         showText("Left Mouse Click = Tower", 725,100);
+        showText("V key = Remove all towers", 725,150);
         prepare();
     }
 
@@ -51,6 +52,8 @@ public class MyWorld extends World
         showText("Money: " + money, 660,30);
         worldTime++;
         spawnWave();
+        
+        
     }
 
     private void Level1()

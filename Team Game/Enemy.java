@@ -55,7 +55,7 @@ public class Enemy extends Actor
         }
         if(health < 1)
         {
-            world.money += 1;
+            world.money += 25;
             getWorld().removeObject(this);
         }
         else if(isAtEdge())
