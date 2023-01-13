@@ -11,16 +11,21 @@ public class MyWorld extends World
     //Bobux
     public static int money= 100;
     int basicTowerPrice = 50;
+    
+    int worldTime;
+    
+    int waveNumber = 1;
 
-    int map [][] = {{1,1,1,1,1,1,0,0,0,0,0,0,0,0,0},
+    int map [][] = {
+            {1,1,1,1,1,2,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,1,1,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-            {0,0,0,0,1,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
+            {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
             {0,0,0,0,0,1,0,0,0,0,0,0,0,0,0},
         };
@@ -41,6 +46,8 @@ public class MyWorld extends World
     {
         addInTowers();
         showText("Money: " + money, 660,30);
+        worldTime++;
+        spawnWave();
     }
 
     private void Level1()
@@ -50,8 +57,13 @@ public class MyWorld extends World
             {
                 if (map[j][i] == 1)
                 {
-                    addObject(new Road(), 30 + i * 60, 30 + j * 60);
+                    addObject(new Road(true), 30 + i * 60, 30 + j * 60);
                 }
+                if (map[j][i] == 2)
+                {
+                    addObject(new Road(90), 30 + i * 60, 30 + j * 60);
+                }
+                
             }
 
     }
@@ -61,6 +73,19 @@ public class MyWorld extends World
         {
             addObject(new Tower (), (Greenfoot.getMouseInfo().getX() /60) * 60 + 30, (Greenfoot.getMouseInfo().getY() /60) * 60 + 30);
             money -= basicTowerPrice;
+        }
+    }
+    
+    public void spawnWave()
+    {
+        if(worldTime % 20 == 0)
+        {
+            addObject(new Enemy(waveNumber),4, 27);
+        }
+        
+        if(worldTime % 400 == 0)
+        {
+            waveNumber++;
         }
     }
     
